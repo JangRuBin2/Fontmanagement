@@ -1,10 +1,10 @@
 function classifyAndFormatFileNames(fileNamesString) {
-  var fileNames = fileNamesString.split('\n').filter(Boolean); // 줄바꿈 문자로 분리한 후 빈 문자열 제거
-  var classifiedFiles = {};
+  let fileNames = fileNamesString.split('\n').filter(Boolean); // 줄바꿈 문자로 분리한 후 빈 문자열 제거
+  let classifiedFiles = {};
 
-  // 파일 이름을 확장자로 분류
+  // 파일 이름을 확장자로 분류 -> 확
   fileNames.forEach(function(fileName) {
-      var extension = fileName.split('.').pop().toUpperCase(); // 확장자 추출 후 대문자로 변환
+      let extension = fileName.split('.').pop().toUpperCase(); // 확장자 추출 후 대문자로 변환
       if (!classifiedFiles[extension]) {
           classifiedFiles[extension] = [];
       }
@@ -12,7 +12,7 @@ function classifyAndFormatFileNames(fileNamesString) {
   });
 
   // 각 확장자 뒤에 쉼표 추가
-  for (var extension in classifiedFiles) {
+  for (let extension in classifiedFiles) {
       classifiedFiles[extension] = classifiedFiles[extension].map(function(fileName) {
           return `${fileName},`; // 백틱을 사용하여 문자열 내에 쉼표를 추가
       });
@@ -21,7 +21,7 @@ function classifyAndFormatFileNames(fileNamesString) {
   return classifiedFiles;
 }
 
-var fileNamesString = `
+let fileNamesString = `
 DSVAsphaltStd-B.otf
 DSVAsphaltStd-B.otf
 DSVGuyStd-B.otf
@@ -36,5 +36,5 @@ DSVWrittingStd-B.otf
 DSVWrittingStd-B.otf
 `;
 
-var formattedFiles = classifyAndFormatFileNames(fileNamesString);
+let formattedFiles = classifyAndFormatFileNames(fileNamesString);
 console.log(formattedFiles);
